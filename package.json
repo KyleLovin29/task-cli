@@ -1,0 +1,30 @@
+{
+  "name": "task-cli",
+  "version": "0.0.1",
+  "description": "CLI for tracking tasks",
+  "main": "index.js",
+  "bin": {
+    "task-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "link-cli": "pnpm unlink --global task-cli && pnpm uninstall --global task-cli && pnpm link --global . && pnpm install --global .",
+    "dev": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.7.0",
+  "pnpm": {
+    "overrides": {
+      "task-cli": "link:"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "commander": "^13.1.0",
+    "figlet": "^1.8.0",
+    "fs": "0.0.1-security",
+    "task-cli": "link:",
+    "typescript": "^5.8.2"
+  }
+}
