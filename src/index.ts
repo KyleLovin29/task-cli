@@ -15,6 +15,11 @@ program
     fileHandler.WriteToFile(fileHandler.ConvertStringToTask(task));
   });
 
-program.command("update <number>").description("Update a task");
+program.command("update <number>").description("Update task by ID").option('-p --in-progress', 'Mark selected task as in-progress').option('-d --done', 'Mark selected task as done');
+program.command("delete <number>").description("Delete task by ID");
+program.command("lt").description("List all tasks");
+program.command("ltd").description("List all tasks marked as done");
+program.command("ltn").description("List all tasks marked as not done");
+program.command("ltp").description("List all tasks marked as in progress");
 
 program.parse(process.argv);
