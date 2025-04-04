@@ -7,11 +7,19 @@ let tasks: Task[] = fs.existsSync("./tasks.json")
 let newTask: Task;
 
 export function ConvertInputToTask(task: string) {
-  let idList = tasks.map((task) => task.id);
-  let incrementId = Math.max(...idList) + 1;
+  let incrementId: number;
+  let idList: number[];
+
+  if (tasks.length > 0) {
+    idList = tasks.map(task => task.id);
+    incrementId = Math.max(...idList) + 1;
+  } else {
+    incrementId = 1;
+  }
+
 
   newTask = {
-    id: incrementId ?? 1,
+    id: incrementId,
     description: task,
     status: "todo",
     createdAt: new Date().toLocaleString("en-US", {
