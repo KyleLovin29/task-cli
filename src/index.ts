@@ -16,10 +16,14 @@ program
     fileHandler.WriteToFile(taskHandler.ConvertInputToTask(task), filePath);
   });
 program
-  .command("update <number>")
+  .command("update <id> <description>")
   .description("Update task by ID")
   .option("-p --in-progress", "Mark selected task as in-progress")
-  .option("-d --done", "Mark selected task as done");
+  .option("-d --done", "Mark selected task as done")
+  .action((id: number, description: string) => {
+    fileHandler.WriteToFile(taskHandler.UpdateTask(id, description), filePath);
+
+  });
 program.command("delete <number>").description("Delete task by ID");
 program.command("lt").description("List all tasks");
 program.command("ltd").description("List all tasks marked as done");
